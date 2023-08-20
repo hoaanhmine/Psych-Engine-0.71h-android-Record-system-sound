@@ -82,7 +82,6 @@ class TitleState extends MusicBeatState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 		
-		
 		//https://github.com/beihu235/AndroidDialogs
 		var lang:String = '';
 		if (DeviceLanguage.getLang() == 'zh') 
