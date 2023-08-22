@@ -1847,7 +1847,7 @@ class ChartingState extends MusicBeatState
 				return;
 			}
 
-			if(FlxG.keys.justPressed.Z #if android || MusicBeatState._virtualpad.buttonV.justPressed #end && curZoom > 0 && !FlxG.keys.pressed.CONTROL) {
+			if((FlxG.keys.justPressed.Z #if android || MusicBeatState._virtualpad.buttonV.justPressed #end) && curZoom > 0 && !FlxG.keys.pressed.CONTROL) {
 				undo();
 			}
 
@@ -1898,7 +1898,7 @@ class ChartingState extends MusicBeatState
 				}
 			}
 
-			if (!FlxG.keys.pressed.ALT && FlxG.keys.justPressed.R #if android || MusicBeatState._virtualpad.buttonV.justPressed #end)
+			if (!FlxG.keys.pressed.ALT && FlxG.keys.justPressed.R /*#if android || MusicBeatState._virtualpad.buttonV.justPressed #end*/)
 			{
 				if (FlxG.keys.pressed.SHIFT #if android || MusicBeatState._virtualpad.buttonC.pressed #end)
 					resetSection(true);
@@ -3117,7 +3117,7 @@ class ChartingState extends MusicBeatState
 	}
 
 	var missingText:FlxText;
-	var missingTextTimer:FlxTimer;
+	var missingTextTimer:FlxTimer;	
 	function loadJson(song:String):Void
 	{
 		//make it look sexier if possible
@@ -3128,7 +3128,7 @@ class ChartingState extends MusicBeatState
 				else
 					PlayState.SONG = Song.loadFromJson(song.toLowerCase() + "-" + Difficulty.getString(), song.toLowerCase());
 			}
-			else PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+			else PlayState.SONG = Song.loadFromJson(song.toLowerCase() + postfix, song.toLowerCase());
 			MusicBeatState.resetState();
 		}
 		catch(e)
